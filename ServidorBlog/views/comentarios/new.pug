@@ -1,0 +1,20 @@
+extends ../layout.pug
+
+block content
+    .container
+        .row
+            .col-12
+                form(action="/comentarios/create", method="POST")
+                    .form-group
+                        label Título
+                        input.form-control(type="text", name="titulo")
+                    .form-group
+                        label Descripción
+                        input.form-control(type="text", name="descripcion")
+                    .form-group
+                        label Categoria
+                        select(name="categoria", class="form-control")
+                            each categoria in categorias
+                                option(value=categoria._id)= categoria.descripcion 
+                    .form-group
+                    input(type="submit", value="Enviar", class="btn btn-block btn-primary")
